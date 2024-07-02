@@ -1,4 +1,4 @@
-# Site de location de voitures
+# Sixt
     Ce projet est un site Web complet de location de voitures construit à l'aide de React pour le frontend et de bases de données relationnelles et non relationnelles pour le backend. Il fournit une interface conviviale permettant aux clients de parcourir, rechercher et louer des voitures, ainsi qu'une interface administrative pour gérer les listes de voitures, les réservations et les informations client.
 
 ## Table des matières
