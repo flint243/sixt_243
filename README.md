@@ -1,71 +1,71 @@
-# Car Rental Website
-    This project is a comprehensive car rental website built using React for the frontend and both relational and non-relational databases for the backend. It provides a user-friendly interface for customers to browse, search, and rent cars, as well as an administrative interface for managing car listings, reservations, and customer information.
+# Site de location de voitures
+    Ce projet est un site Web complet de location de voitures construit à l'aide de React pour le frontend et de bases de données relationnelles et non relationnelles pour le backend. Il fournit une interface conviviale permettant aux clients de parcourir, rechercher et louer des voitures, ainsi qu'une interface administrative pour gérer les listes de voitures, les réservations et les informations client.
 
-## Table of Contents
-Features
-Technologies Used
+## Table des matières
+Caractéristiques
+Technologies utilisées
 Installation
 Usage
-Database Schemas
-Folder Structure
-Contributing
-License
-## Features
-    User Authentication: Sign up, login, and manage user accounts.
-    Car Listings: Browse a variety of cars available for rent.
-    Search and Filter: Search cars by brand, type, and price.
-    Booking System: Reserve cars for specific dates.
-    Admin Panel: Manage car listings, view reservations, and handle customer queries.
-    Responsive Design: Mobile-friendly interface.
+Schémas de base de données
+Structure des dossiers
+Contribuant
+Licence
+## Caractéristiques
+    Authentification utilisateur : inscrivez-vous, connectez-vous et gérez les comptes utilisateur.
+    Annonces de voitures : parcourez une variété de voitures disponibles à la location.
+    Recherche et filtre : recherchez des voitures par marque, type et prix.
+    Système de réservation : réservez des voitures pour des dates spécifiques.
+    Panneau d'administration : gérez les listes de voitures, affichez les réservations et gérez les requêtes des clients.
+    Conception réactive : interface adaptée aux mobiles.
 
 
-# Technologies Used
-### Frontend
-    React
+# Technologies utilisées
+### L'extrémité avant
+    Réagir
     CSS
-    Bootstrap (for responsive design)
-### Backend
-    Node.js
+    Bootstrap (pour une conception réactive)
+### Back-end
+    Noeud.js
     Express.js
-### Databases
-    Relational Database: PostgreSQL
-    Non-Relational Database: MongoDB
-### Authentication
-    JWT (JSON Web Tokens) for user authentication
-### Additional Libraries and Tools
-    Axios (for API requests)
-    React Router (for navigation)
-    Mongoose (for MongoDB interaction)
-    Sequelize (for PostgreSQL interaction)
-    dotenv (for environment variables)
-    bcrypt (for password hashing)
-## Installation
-   ### Prerequisites
-    Ensure you have the following installed on your machine:
+### Bases de données
+    Base de données relationnelle : PostgreSQL
+    Base de données non relationnelle : MongoDB
+### Authentification
+    JWT (JSON Web Tokens) pour l'authentification des utilisateurs
+### Bibliothèques et outils supplémentaires
+    Axios (pour les requêtes API)
+    React Router (pour la navigation)
+    Mongoose (pour l'interaction MongoDB)
+    Sequelize (pour l'interaction PostgreSQL)
+    dotenv (pour les variables d'environnement)
+    bcrypt (pour le hachage de mot de passe)
+##Installation
+   ### Conditions préalables
+    Assurez-vous que les éléments suivants sont installés sur votre ordinateur :
 
-    Node.js
-    npm or yarn
+    Noeud.js
+    npm ou fil
     PostgreSQL
     MongoDB
 
-### Steps
+### Pas
 
-1. Clone the Repository
-- git clone https://github.com/your-username/car-rental-website.git
-cd car-rental-website
+1. Cloner le référentiel
+- clone git https://github.com/your-username/car-rental-website.git
+site-de-location-de-voiture-cd
 
-2. Install Dependencies
-- npm i vite @latest
-- npm install
-- npm i react router-dom
-- npm i express cors
+2. Installer les dépendances
+- npm je viens @latest
+- installation npm
+- npm je réagis routeur-dom
+- npm j'exprime les cors
 
-# React + Vite
+# Réagir + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Ce modèle fournit une configuration minimale pour faire fonctionner React dans Vite avec HMR et certaines règles ESLint.
 
-Currently, two official plugins are available:
+Actuellement, deux plugins officiels sont disponibles :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-# sixt_243
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) utilise [Babel](https://babeljs .io/) pour une actualisation rapide
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) utilise [SWC](https://swc.rs/) pour l'actualisation rapide
+#sixt_243
