@@ -1,0 +1,56 @@
+.multi {
+    color: #f6d601;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.color_chang {
+    color: #0c0c0e;
+}
+
+.footer {
+    font-family: Poppins;
+    background: #fff;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.cont {
+    padding-top: 20px;
+}
+
+.cont h3 {
+    color: #414141;
+    font-size: 40px;
+    line-height: 50px;
+    font-weight: bold;
+}
+
+.cont_call h3 {
+    color: #414141;
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.copyright {
+    margin-top: 43px;
+    padding: 20px 0px;
+    background-color: #23262d;
+}
+
+.copyright p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.copyright a {
+    color: #fff;
+}
+
+.copyright a:hover {
+    color: #f6d601;
+}

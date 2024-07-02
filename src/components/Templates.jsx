@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../assets/css/style.css'
 import '../assets/css/meanmenu.css'
 import '../assets/css/normalize.css'
@@ -17,27 +17,35 @@ import cross from '../assets/images/cross_img.png';
 import loading from '../assets/images/loading.gif';
 import menuIcon from '../assets/images/menu_icon.png';
 import te1 from '../assets/images/te1.png';
-import HeaderComponent from './HeaderComponent'
-import FooterComponet from './FooterComponet'
-
+import scrollTopIcon from '../assets/images/scroll_top_icon.png';
+import HeaderComponent from './HeaderComponent';
+import FooterComponet from './FooterComponet';
 
 export default function Templates() {
+  
+  useEffect(() => {
+    const scrollToTopButton = document.getElementById('scrollToTopButton');
+    scrollToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }, []);
+
   return (
     <>
-      <HeaderComponent/>
       <section className="banner_main">
          <div className="container">
             <div className="row d_flex">
                <div className="col-md-12">
                   <div className="text-bg">
-                     <h1>Find best car Here For rent</h1>
-                     <strong>Free Multipurpose Responsive</strong>
-                     <span>Landing Page 2019</span>
+                     <h1>Trouvez la meilleure voiture ici À louer</h1>
+                     <strong>Gratuit Multifonctionnel Adaptatif</strong>
                      <p>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since theLorem Ipsum is simply dummy text of the printing 
-                        <head></head>
+                     Roulez librement avec nos offres de location de voiture personnalisées - votre aventure commence ici !
                      </p>
-                     <a href="#">Read More</a>
+                     <a href="#">Lire Plus</a>
                   </div>
                </div>
             </div>
@@ -49,8 +57,8 @@ export default function Templates() {
             <div className="row">
                <div className="col-md-12">
                   <div className="titlepage">
-                     <h2>VARIETY OF CARS </h2>
-                     <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna</span>
+                     <h2>VARIÉTÉ DE VOITURES</h2>
+                     <span>Découvrez notre vaste sélection de voitures pour tous vos besoins - de la citadine économique au SUV spacieux, nous avons le véhicule parfait pour vous !</span>
                   </div>
                </div>
             </div>
@@ -58,13 +66,31 @@ export default function Templates() {
                <div className="col-md-4 padding_leri">
                   <div className="car_box">
                      <figure><img src={car1} alt="#"/></figure>
-                     <h3>Hundai</h3>
+                     <h3>Hyundai</h3>
                   </div>
                </div>
                <div className="col-md-4 padding_leri">
                   <div className="car_box">
                      <figure><img src={car2} alt="#"/></figure>
                      <h3>Audi</h3>
+                  </div>
+               </div>
+               <div className="col-md-4 padding_leri">
+                  <div className="car_box">
+                     <figure><img src={car3} alt="#"/></figure>
+                     <h3>Bmw</h3>
+                  </div>
+               </div>
+               <div className="col-md-4 padding_leri">
+                  <div className="car_box">
+                     <figure><img src={car3} alt="#"/></figure>
+                     <h3>Porsche</h3>
+                  </div>
+               </div>
+               <div className="col-md-4 padding_leri">
+                  <div className="car_box">
+                     <figure><img src={car3} alt="#"/></figure>
+                     <h3>Mercedes</h3>
                   </div>
                </div>
                <div className="col-md-4 padding_leri">
@@ -89,23 +115,23 @@ export default function Templates() {
                      <div className="col-md-6 offset-md-6">
                         <form className="main_form">
                            <div className="titlepage">
-                              <h2>Find A  Best Car For Rent</h2>
+                              <h2>Trouvez la meilleure voiture à louer</h2>
                            </div>
                            <div className="row">
                               <div className="col-md-12 ">
                                  <select>
-                                    <option value="0">Choose car Make</option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    <option value="0">Choisissez la marque de la voiture</option>
+                                    <option value="1">Hyunday</option>
+                                    <option value="2">Audi</option>
+                                    <option value="3">BMW x5</option>
                                  </select>
                               </div>
                               <div className="col-md-12">
                                  <select>
-                                    <option value="0">Choose Car Type </option>
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
+                                    <option value="0">Choisissez le type de voiture</option>
+                                    <option value="Berline">Berline</option>
+                                    <option value="Sport">Sport</option>
+                                    <option value="Utilitaires">Utliaires</option>
                                  </select>
                               </div>
                               <div className="col-md-12">
@@ -113,14 +139,14 @@ export default function Templates() {
                               </div>
                               <div className="col-md-12">
                                  <select>
-                                    <option value="0">Price of Rent</option>
+                                    <option value="0">Prix ​de livraison</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
                                  </select>
                               </div>
                               <div className="col-sm-12">
-                                 <button className="find_btn">Find Now</button>
+                                 <button className="find_btn">Trouvez maintenant</button>
                               </div>
                            </div>
                         </form>
@@ -131,37 +157,39 @@ export default function Templates() {
          </div>
       </div>
       
-      <div className="choose ">
+      <div className="choose">
          <div className="container">
             <div className="row">
                <div className="col-md-12">
                   <div className="titlepage">
-                     <h2>Why Choose Us</h2>
-                     <span>It is a long established fact that a reader will be distracted by the readable content of a page when<br/> looking at its layout. The point of using </span>
+                     <h2>Pourquoi Nous</h2>
+                     <span>Votre choix idéal pour la location de voiture </span>
                   </div>
                </div>
             </div>
             <div className="row">
                <div className="col-md-12">
                   <div className="choose_box">
-                     <span>01</span>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making </p>
+                     <span>Vaste Sélection de Véhicules </span>
+                     <p>Nous offrons une variété de voitures adaptées à tous les besoins et budgets, allant des petites citadines économiques aux SUV luxueux et spacieux.</p>
                   </div>
                </div>
                <div className="col-md-12">
                   <div className="choose_box">
-                     <span>02</span>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making </p>
+                     <span>Tarifs Compétitifs et Transparents </span>
+                     <p>Profitez de nos tarifs attractifs et sans surprise, avec des options de location flexibles et sans frais cachés. Nos offres spéciales et promotions régulières rendent nos services encore plus abordables.</p>
                   </div>
                </div>
                <div className="col-md-12">
                   <div className="choose_box">
-                     <span>03</span>
-                     <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making </p>
+                     <span>Service Client Exceptionnel </span>
+                     <p>Notre équipe dédiée est disponible 24/7 pour vous assister et garantir une expérience de location fluide et agréable. Que ce soit pour des conseils, des ajustements ou des questions, nous sommes là pour vous aider à chaque étape.</p>
                   </div>
                </div>
             </div>
          </div>
+         <button id="scrollToTopButton" className="scrollToTopButton"><img src={scrollTopIcon} alt='img' />
+         </button>
       </div>
       
       <div className="cutomer">
@@ -169,7 +197,7 @@ export default function Templates() {
             <div className="row">
                <div className="col-md-12">
                   <div className="titlepage">
-                     <h2>What is says our cutomer</h2>
+                     <h2>Ce que disent nos clients</h2>
                   </div>
                </div>
             </div>
@@ -190,9 +218,8 @@ export default function Templates() {
                                  </div>
                                  <div className="our cross_layout">
                                     <div className="test_box">
-                                       <h4>Due markes</h4>
-                                       <span>Rental</span>
-                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                                       <h4>Marie D</h4>
+                                       <p>J'ai loué une voiture pour un week-end à la campagne et l'expérience a été fantastique. Le processus de réservation était simple et rapide, et le véhicule était en parfait état. Le service client était très réactif et sympathique. Je recommande vivement !</p>
                                        <i><img src={te1} alt="#"/></i>
                                     </div>
                                  </div>
@@ -207,9 +234,8 @@ export default function Templates() {
                                  </div>
                                  <div className="our cross_layout">
                                     <div className="test_box">
-                                       <h4>Due markes</h4>
-                                       <span>Rental</span>
-                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                                       <h4>Ahmed K</h4>
+                                       <p>Je suis très satisfait de ma location. Le choix de voitures est excellent, et j'ai trouvé exactement ce dont j'avais besoin pour mon voyage d'affaires. Les prix sont compétitifs et transparents, sans frais cachés. Je reviendrai certainement pour mes prochaines locations.</p>
                                        <i><img src={te1} alt="#"/></i>
                                     </div>
                                  </div>
@@ -224,9 +250,8 @@ export default function Templates() {
                                  </div>
                                  <div className="our cross_layout">
                                     <div className="test_box">
-                                       <h4>Due markes</h4>
-                                       <span>Rental</span>
-                                       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit ess</p>
+                                       <h4>Laura S</h4>
+                                       <p>Excellente expérience de location ! Le véhicule était propre et bien entretenu, et le personnel était professionnel et serviable. J'ai particulièrement apprécié les offres spéciales qui m'ont permis de faire des économies. Merci pour ce service de qualité !</p>
                                        <i><img src={te1} alt="#"/></i>
                                     </div>
                                  </div>
@@ -247,7 +272,6 @@ export default function Templates() {
             </div>
          </div>
       </div>
-      <FooterComponet/>
       
     </>
   )
