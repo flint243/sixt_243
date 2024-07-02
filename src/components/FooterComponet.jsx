@@ -14,11 +14,6 @@ export default function FooterComponet() {
                            (+1) 12345667890
                         </h3>
                      </div>
-                     <div className="cont">
-                        <h3> <strong className="multi"> Free Multipurpose</strong> 
-                           Responsive Landing Page 2019
-                        </h3>
-                     </div>
                   </div>
                </div>
             </div>
@@ -26,7 +21,7 @@ export default function FooterComponet() {
                <div className="container">
                   <div className="row">
                      <div className="col-md-12">
-                        <p>© 2019 All Rights Reserved. Design by <a href="https://html.design/"> Free Html Templates</a></p>
+                        <p>© 2019 All Rights Reserved.</p>
                      </div>
                   </div>
                </div>
