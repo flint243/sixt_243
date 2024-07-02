@@ -47,9 +47,6 @@ Ce projet est un site Web complet de location de voitures construit à l'aide de
 
     Axios (pour les requêtes API)
     React Router (pour la navigation)
-    Mongoose (pour l'interaction MongoDB)
-    Sequelize (pour l'interaction PostgreSQL)
-    dotenv (pour les variables d'environnement)
     bcrypt (pour le hachage de mot de passe)
     
 ##Installation
