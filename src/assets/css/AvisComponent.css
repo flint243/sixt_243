@@ -1,0 +1,82 @@
+.news-container {
+    width: 50%;
+    display: block;
+    margin: auto;
+    background: #23262D;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 8rem;
+    margin-bottom: 8rem;
+    color: white;
+  }
+  
+  .news-container h1 {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: white;
+  }
+  
+  .news-container p {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .news-container input {
+    width: 100%;
+    height: 3rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+    color: black;
+  }
+  
+  .news-container button {
+    background: #f6d601;
+    color: white;
+    padding: 16px 5rem;
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    display: block;
+    margin: auto;
+  }
+
+  .message-area{
+    height: 200px;
+    width: 100%;
+  }
+  
+  /* Responsive styles for iPhone 14 Pro Max */
+  @media only screen and (max-width: 430px) {
+    .news-container {
+      width: 90%; /* Adjust width to fit smaller screens */
+      padding: 1rem; /* Reduce padding for smaller screens */
+      margin-top: 4rem; /* Adjust top margin for smaller screens */
+      margin-bottom: 4rem; /* Adjust bottom margin for smaller screens */
+    }
+  
+    .news-container h1 {
+      font-size: 2rem; /* Reduce font size for smaller screens */
+      margin-bottom: 1rem; /* Adjust margin for smaller screens */
+      color: white;
+    }
+  
+    .news-container p {
+      font-size: 1rem; /* Reduce font size for smaller screens */
+      margin-bottom: 0.5rem; /* Adjust margin for smaller screens */
+    }
+  
+    .news-container input {
+      height: 2.5rem; /* Adjust input height for smaller screens */
+      padding-bottom: 3rem; /* Adjust padding bottom for smaller screens */
+    }
+  
+    .news-container button {
+      padding: 10px 2rem; /* Adjust button padding for smaller screens */
+      font-size: 1.2rem; /* Reduce button font size for smaller screens */
+    }
+  }
+  

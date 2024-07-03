@@ -2,7 +2,8 @@ import React from 'react'
 import Templates from '../components/Templates'
 import HeaderComponent from '../components/HeaderComponent'
 import FooterComponet from '../components/FooterComponet'
-import ContactComponent from '../components/ContactComponent'
+import AvisComponent from '../components/AvisComponent'
+import FeedbackComponent from '../components/FeedbackComponent'
 
 
 function Home()  {
@@ -11,6 +12,8 @@ function Home()  {
     
         <HeaderComponent/>
         <Templates/>
+        <FeedbackComponent/>
+        <AvisComponent/>
         <FooterComponet/>
 
     </>
