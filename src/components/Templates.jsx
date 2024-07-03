@@ -41,7 +41,6 @@ export default function Templates() {
                <div className="col-md-12">
                   <div className="text-bg">
                      <h1>Trouvez la meilleure voiture ici À louer</h1>
-                     <strong>Gratuit Multifonctionnel Adaptatif</strong>
                      <p>
                      Roulez librement avec nos offres de location de voiture personnalisées - votre aventure commence ici !
                      </p>
