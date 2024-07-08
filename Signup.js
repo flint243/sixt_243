@@ -1,84 +1,89 @@
-import React, { useState } from "react";  // Importation des modules React et useState
-import axios from "axios";  // Importation de la bibliothèque axios pour les requêtes HTTP
-import ReCAPTCHA from "react-google-recaptcha";  // Importation du composant ReCAPTCHA
+import React, { useState } from "react";
+import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export default function Signup() {
-    // Définition de l'état initial des valeurs du formulaire avec useState
     const [values, setValues] = useState({
-        surname: "",  // Champ pour le nom de famille
-        name: "",  // Champ pour le prénom
-        email: "",  // Champ pour l'email
-        phone: "",  // Champ pour le téléphone
-        password: "",  // Champ pour le mot de passe
-        confirmPassword: ""  // Champ pour la confirmation du mot de passe
+        surname: "",
+        name: "",
+        email: "",
+        phone: "",
+        password: "",
+        confirmPassword: ""
     });
 
-    // Définition de l'état pour vérifier si le captcha est validé
     const [captchaVerified, setCaptchaVerified] = useState(false);
-    // Définition de l'état pour les erreurs du formulaire
     const [formErrors, setFormErrors] = useState({});
+    const [apiError, setApiError] = useState("");
 
-    // Fonction pour gérer les changements dans les champs du formulaire
     const handleChange = (event) => {
         const { name, value } = event.target;
 
         if (name === "name") {
-            const formattedName = value.replace(/[^a-zA-Z]/g, "").substring(0, 30);  // Suppression des caractères non alphabétiques et limitation à 30 caractères
-            setValues({ ...values, [name]: formattedName.charAt(0).toUpperCase() + formattedName.slice(1) });  // Mise en majuscule de la première lettre
+            const formattedName = value.replace(/[^a-zA-Z]/g, "").substring(0, 30);
+            setValues({ ...values, [name]: formattedName.charAt(0).toUpperCase() + formattedName.slice(1) });
         } else if (name === "surname") {
-            const formattedSurname = value.replace(/[^a-zA-Z]/g, "").substring(0, 30).toUpperCase();  // Suppression des caractères non alphabétiques, limitation à 30 caractères et mise en majuscule
+            const formattedSurname = value.replace(/[^a-zA-Z]/g, "").substring(0, 30).toUpperCase();
             setValues({ ...values, [name]: formattedSurname });
+        } else if (name === "phone") {
+            // Allow only + and numbers, limit to 12 characters
+            const formattedPhone = value.replace(/[^+\d]/g, "").substring(0, 12);
+            setValues({ ...values, [name]: formattedPhone });
         } else {
-            setValues({ ...values, [name]: value });  // Mise à jour de l'état pour les autres champs
+            setValues({ ...values, [name]: value });
         }
     }
 
-    // Fonction pour valider les champs du formulaire
     const validateForm = () => {
         const errors = {};
-        const nameRegex = /^[a-zA-Z]{1,30}$/;  // Regex pour valider le prénom
-        const surnameRegex = /^[A-Z]{1,30}$/;  // Regex pour valider le nom de famille
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;  // Regex pour valider l'email
-        const phoneRegex = /^[0-9]{10,15}$/;  // Regex pour valider le téléphone
+        const nameRegex = /^[a-zA-Z]{1,30}$/;
+        const surnameRegex = /^[A-Z]{1,30}$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
 
         if (!nameRegex.test(values.name)) {
-            errors.name = "Name should contain only letters and be up to 30 characters.";  // Message d'erreur pour le prénom
+            errors.name = "Name should contain only letters and be up to 30 characters.";
         }
         if (!surnameRegex.test(values.surname)) {
-            errors.surname = "Surname should contain only uppercase letters and be up to 30 characters.";  // Message d'erreur pour le nom de famille
+            errors.surname = "Surname should contain only uppercase letters and be up to 30 characters.";
         }
         if (!emailRegex.test(values.email)) {
-            errors.email = "Invalid email address.";  // Message d'erreur pour l'email
+            errors.email = "Invalid email address.";
         }
-        if (!phoneRegex.test(values.phone)) {
-            errors.phone = "Phone should contain only numbers and be between 10 and 15 digits.";  // Message d'erreur pour le téléphone
-        }
+        
         if (values.password !== values.confirmPassword) {
-            errors.password = "Passwords do not match.";  // Message d'erreur pour les mots de passe
+            errors.password = "Passwords do not match.";
         }
         if (!captchaVerified) {
-            errors.captcha = "Please verify that you are not a robot.";  // Message d'erreur pour le captcha
+            errors.captcha = "Please verify that you are not a robot.";
         }
 
-        return errors;  // Retourne les erreurs trouvées
+        return errors;
     }
 
-    // Fonction pour gérer le changement de l'état du captcha
     const handleCaptchaChange = (value) => {
-        setCaptchaVerified(!!value);  // Mise à jour de l'état captchaVerified
+        setCaptchaVerified(!!value);
     }
 
-    // Fonction pour gérer la soumission du formulaire
     const handleSubmit = (event) => {
-        event.preventDefault();  // Empêche le comportement par défaut du formulaire
-        const errors = validateForm();  // Valide le formulaire et récupère les erreurs
+        event.preventDefault();
+        const errors = validateForm();
 
-        if (Object.keys(errors).length === 0) {  // Si aucune erreur
-            axios.post("http://localhost:8002/localxit_dt", values)  // Envoie les données du formulaire au serveur
-                .then(res => console.log("Registered Successfully!"))  // Message de succès
-                .catch(err => console.log(err));  // Gère les erreurs de la requête
+        if (Object.keys(errors).length === 0) {
+            axios.post("http://localhost:8002/localxit_dt", values)
+                .then(res => {
+                    console.log("Registered Successfully!");
+                    setApiError("");
+                })
+                .catch(err => {
+                    if (err.response && err.response.status === 409) {
+                        setApiError("Email or phone number already exists");
+                    } else {
+                        console.log(err);
+                    }
+                });
         } else {
-            setFormErrors(errors);  // Mise à jour de l'état formErrors
+            setFormErrors(errors);
         }
     }
 
@@ -97,7 +102,7 @@ export default function Signup() {
                         onChange={handleChange}
                         required
                     />
-                    {formErrors.surname && <p className="text-danger">{formErrors.surname}</p>}  
+                    {formErrors.surname && <p className="text-danger">{formErrors.surname}</p>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="name"><strong>Name</strong></label>
@@ -110,7 +115,7 @@ export default function Signup() {
                         onChange={handleChange}
                         required
                     />
-                    {formErrors.name && <p className="text-danger">{formErrors.name}</p>} 
+                    {formErrors.name && <p className="text-danger">{formErrors.name}</p>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="email"><strong>Email</strong></label>
@@ -123,20 +128,20 @@ export default function Signup() {
                         onChange={handleChange}
                         required
                     />
-                    {formErrors.email && <p className="text-danger">{formErrors.email}</p>}  
+                    {formErrors.email && <p className="text-danger">{formErrors.email}</p>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="phone"><strong>Phone</strong></label>
                     <input
                         type="text"
-                        placeholder="Enter Phone"
+                        placeholder="Enter Phone (+33XXXXXXXXX)"
                         name="phone"
                         className="form-control rounded-0"
                         value={values.phone}
                         onChange={handleChange}
                         required
                     />
-                    {formErrors.phone && <p className="text-danger">{formErrors.phone}</p>}  
+                    {formErrors.phone && <p className="text-danger">{formErrors.phone}</p>}
                 </div>
                 <div className="mb-3">
                     <label htmlFor="password"><strong>Password</strong></label>
@@ -162,15 +167,16 @@ export default function Signup() {
                         onChange={handleChange}
                         required
                     />
-                    {formErrors.password && <p className="text-danger">{formErrors.password}</p>}  
+                    {formErrors.password && <p className="text-danger">{formErrors.password}</p>}
                 </div>
                 <div className="mb-3">
                     <ReCAPTCHA
-                        sitekey="6LfgYQgqAAAAAOhlU3w6_fF_w8pcpxauAfwaN14-"  // Clé de site ReCAPTCHA
-                        onChange={handleCaptchaChange}  // Fonction appelée lors du changement de l'état du captcha
+                        sitekey="6LfgYQgqAAAAAOhlU3w6_fF_w8pcpxauAfwaN14-"
+                        onChange={handleCaptchaChange}
                     />
                     {formErrors.captcha && <p className="text-danger">{formErrors.captcha}</p>}
                 </div>
+                {apiError && <p className="text-danger">{apiError}</p>}
                 <button type="submit" className="btn btn-success w-100 rounded-0">Sign Up</button>
             </form>
         </div>

@@ -1,72 +1,102 @@
-import React, { useState } from "react";  // Importation de React et du hook useState
-import Signup from "./Signup";  // Importation du composant Signup (s'assurer que le chemin est correct)
-import Signin from "./Signin";  // Importation du composant Signin (s'assurer que le chemin est correct)
+import React, { useState } from "react";
+import Signup from "./Signup";
+import Signin from "./Signin";
+import Contactus from "./Contactus";
 
-export default function Navbar() {
-    // Définition de l'état initial pour contrôler l'affichage des modales Signup et Signin
+export default function Navbar({ user, onSignIn, onSignOut }) {
     const [showSignup, setShowSignup] = useState(false);
     const [showSignin, setShowSignin] = useState(false);
+    const [showContactus, setShowContactus] = useState(false);
 
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-light bg-light px-4 w-100">
-                <h1 className="text-left">Sixit</h1>  {/* Titre de la navbar */}
+                <h1 className="text-left">Sixit</h1>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>  {/* Bouton pour toggler la navbar sur les petits écrans */}
+                    <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link btn btn-link mr-3" href="index.html">Home</a>  {/* Lien vers la page d'accueil */}
+                            <a className="nav-link btn btn-link mr-3" href="index.html">Home</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link btn btn-link mr-3" href="#">About</a>  {/* Lien vers la page "About" */}
+                            <a className="nav-link btn btn-link mr-3" href="#">About</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link btn btn-link mr-3" href="#">Contact us</a>  {/* Lien vers la page "Contact us" */}
+                            <button className="nav-link btn btn-link mr-3" onClick={() => setShowContactus(true)}>Contact us</button>
                         </li>
-                        <li className="nav-item">
-                            <button className="nav-link btn btn-link mr-3" onClick={() => setShowSignup(true)}>Sign up</button>  {/* Bouton pour ouvrir la modale d'inscription */}
-                        </li>
+                        {!user ? (
+                            <>
+                                <li className="nav-item">
+                                    <button className="nav-link btn btn-outline-warning mr-3" onClick={() => setShowSignup(true)}>Sign up</button>
+                                </li>
+                                <div className="sign_btn">
+                                    <button className="nav-link btn btn-outline-warning" onClick={() => setShowSignin(true)}>Sign in</button>
+                                </div>
+                            </>
+                        ) : (
+                            <>
+                                <li className="nav-item">
+                                    <span className="nav-link">{user.name} {user.surname}</span>
+                                </li>
+                                <li className="nav-item">
+                                    <button className="nav-link btn btn-outline-danger" onClick={onSignOut}>Log out</button>
+                                </li>
+                            </>
+                        )}
                     </ul>
-                    <div className="sign_btn">
-                        <button className="nav-link btn btn-primary" onClick={() => setShowSignin(true)}>Sign in</button>  {/* Bouton pour ouvrir la modale de connexion */}
-                    </div>
                 </div>
             </nav>
 
-            {/* Modale d'inscription */}
             {showSignup && (
                 <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">Sign Up</h5>
-                                <button type="button" className="close" onClick={() => setShowSignup(false)}>  {/* Bouton pour fermer la modale */}
-                                    <span>&times;</span>  {/* Symbole de fermeture */}
+                                <button type="button" className="close" onClick={() => setShowSignup(false)}>
+                                    <span>&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <Signup />  {/* Inclusion du composant Signup */}
+                                <Signup />
                             </div>
                         </div>
                     </div>
                 </div>
             )}
 
-            {/* Modale de connexion */}
             {showSignin && (
                 <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                     <div className="modal-dialog modal-dialog-centered">
                         <div className="modal-content">
                             <div className="modal-header">
                                 <h5 className="modal-title">Sign In</h5>
-                                <button type="button" className="close" onClick={() => setShowSignin(false)}>  {/* Bouton pour fermer la modale */}
-                                    <span>&times;</span>  {/* Symbole de fermeture */}
+                                <button type="button" className="close" onClick={() => setShowSignin(false)}>
+                                    <span>&times;</span>
                                 </button>
                             </div>
                             <div className="modal-body">
-                                <Signin />  {/* Inclusion du composant Signin */}
+                                <Signin onSignIn={onSignIn} />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {showContactus && (
+                <div className="modal" style={{ display: 'block', backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+                    <div className="modal-dialog modal-dialog-centered">
+                        <div className="modal-content">
+                            <div className="modal-header">
+                                <h5 className="modal-title">Contact Us</h5>
+                                <button type="button" className="close" onClick={() => setShowContactus(false)}>
+                                    <span>&times;</span>
+                                </button>
+                            </div>
+                            <div className="modal-body">
+                                <Contactus user={user} />
                             </div>
                         </div>
                     </div>
