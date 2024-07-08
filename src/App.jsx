@@ -4,21 +4,18 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Student from './components/Student'
 import UpdateStudent from './components/UpdateStudent';
 import CreateStudent from './components/CreateStudent';
-
 function App() {
 
   return (
-
 
   <Router>
     
             
        <Routes>
-
          <Route path='/' element={<Student />} />
          <Route path='/create' element={<CreateStudent/>} />
          <Route path='/update/:id' element={<UpdateStudent />} />
-      
+
        </Routes>
 
    </Router>

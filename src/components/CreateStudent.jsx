@@ -22,21 +22,21 @@ const CreateStudent = () => {
     <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
         <div className='w-50 bg-white rounded p-3'>
             <form onSubmit = {handleSubmit}>
-                <h2>Add Student</h2>
+                <h2>Ajouter réservation</h2>
                 <div className='mb-2'>
                     <label htmlFor="">Name</label>
-                    <input type="text" placeholder='Enter-Name' className='form-control'
-                    onchange={e => setName(e.target.value)}
+                    <input type="text" placeholder='Entrez votre nom' className='form-control'
+                    onChange={e => setName(e.target.value)}
                     />
                 </div>
 
                 <div className='mb-2'>
                     <label htmlFor="">Email</label>
-                    <input type="email" placeholder='Enter-Email' className='form-control'
-                    onchange={e => setEmail(e.target.value)}
+                    <input type="email" placeholder='Entrez votre email' className='form-control'
+                    onChange={e => setEmail(e.target.value)}
                     />
                 </div>
-                <button className='btn btn-success'>Submit</button>
+                <button className='btn btn-success'>Soumettre</button>
             </form>
         </div>
     </div>

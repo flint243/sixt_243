@@ -131,10 +131,10 @@ export default function HeaderComponent() {
                         <div className="collapse navbar-collapse" id="navbarsExample04">
                            <ul className="navbar-nav mr-auto">
                               <li className="nav-item">
-                                 <a className="nav-link" href="index.html"> Home  </a>
+                                 <a className="nav-link" href="index.html"> Home </a>
                               </li>
                               <li className="nav-item">
-                                 <a className="nav-link" href="#">About</a>
+                                 <a className="nav-link" href="">About</a>
                               </li>
                               <li className="nav-item">
                                  <a className="nav-link" href="#">Contact us</a>

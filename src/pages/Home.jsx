@@ -4,13 +4,15 @@ import HeaderComponent from '../components/HeaderComponent'
 import FooterComponet from '../components/FooterComponet'
 import AvisComponent from '../components/AvisComponent'
 import FeedbackComponent from '../components/FeedbackComponent'
+import Navbar from '../components/Navbar';
+
 
 
 function Home()  {
     return (
     <>
     
-        <HeaderComponent/>
+        <Navbar/>
         <Templates/>
         <FeedbackComponent/>
         <AvisComponent/>

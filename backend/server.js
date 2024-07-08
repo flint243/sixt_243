@@ -1,5 +1,5 @@
 const express = require("express");
-const  cors = require("cors");
+const cors = require("cors");
 const mysql = require("mysql");
 
 
@@ -11,11 +11,13 @@ app.use(cors());
 
 app.use(cors())
 
+
+// MySQL connection
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
-    password: "",
-    databse: ""
+    password: "Alexandre24",
+    databse: "mydatabase"
 })
 
 app.get("/", (req, res) => {
@@ -58,7 +60,7 @@ app.delete('/student/:id', (req, res) => {
     const sql = "DELETE FROM student WHERE ID = ?";
     const id = req.params.id;
 
-    db.query(sql, [id], (err, data) =>{
+    db.query(sql, [id], (err, data) => {
         if(err) return res.json("Error");
         return res.json(data);
     })
