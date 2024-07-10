@@ -1,66 +1,131 @@
-const express = require("express");  // Importation du module express
-const mysql = require("mysql");  // Importation du module mysql
-const cors = require("cors");  // Importation du module cors pour gérer les politiques de partage de ressources cross-origin
-const bcrypt = require("bcrypt");  // Importation du module bcrypt pour le hachage des mots de passe
+const express = require("express");
+const mysql = require("mysql");
+const cors = require("cors");
+const bcrypt = require("bcrypt");
 
-const app = express();  // Création de l'application Express
-app.use(cors());  // Utilisation de cors pour permettre les requêtes cross-origin
-app.use(express.json());  // Middleware pour analyser les corps de requêtes JSON
+const app = express();
+app.use(cors());
+app.use(express.json());
 
 const db = mysql.createConnection({
-    host: "localhost",  // Hôte de la base de données
-    user: "root",  // Nom d'utilisateur de la base de données
-    password: "",  // Mot de passe de la base de données
-    database: "localxit_dt"  // Nom de la base de données
+    host: process.env.DB_HOST || "localhost",
+    user: process.env.DB_USER || "root",
+    password: process.env.DB_PASSWORD || "",
+    database: process.env.DB_NAME || "site_location"
+});
+
+db.connect((err) => {
+    if (err) {
+        console.error("Error connecting to the database:", err);
+    } else {
+        console.log("Connected to the database");
+    }
 });
 
 // Endpoint pour l'inscription
-app.post("/localxit_dt", async (req, res) => {
-    const { surname, name, email, phone, password } = req.body;  // Extraction des données du corps de la requête
-
-    const saltRounds = 10;  // Nombre de tours pour le sel de bcrypt
-    try {
-        const hashedPassword = await bcrypt.hash(password, saltRounds);  // Hachage du mot de passe
-
-        const sql = "INSERT INTO clients (nom_Clients, prenom_Clients, email_Clients, telephone_Clients, mot_de_passe_Clients) VALUES (?, ?, ?, ?, ?)";
-        const values = [surname, name, email, phone, hashedPassword];  // Préparation des valeurs pour l'insertion dans la base de données
-
-        db.query(sql, values, (err, data) => {  // Exécution de la requête SQL
-            if (err) {
-                return res.json(err);  // Retourne l'erreur si la requête échoue
-            } else {
-                return res.json(data);  // Retourne les données si la requête réussit
-            }
-        });
-    } catch (error) {
-        return res.status(500).json({ error: "Error hashing password" });  // Retourne une erreur 500 en cas d'échec du hachage
+app.post("/site_location", (req, res) => {
+    const { surname, name, email, phone, password } = req.body;
+    if (!surname || !name || !email || !phone || !password) {
+        return res.status(400).json({ error: "All fields are required" });
     }
+    console.log("Received registration request:", { surname, name, email, phone });
+
+    // Vérification si l'email ou le numéro de téléphone existe déjà
+    const checkSql = "SELECT * FROM clients WHERE email_Clients = ? OR telephone_Clients = ?";
+    db.query(checkSql, [email, phone], (checkErr, checkData) => {
+        if (checkErr) {
+            console.error("Error checking existing user:", checkErr);
+            return res.status(500).json({ error: "Error checking existing user" });
+        }
+        if (checkData.length > 0) {
+            return res.status(409).json({ error: "Email or phone number already exists" });
+        }
+
+        // Hachage du mot de passe
+        bcrypt.hash(password, 10, (hashErr, hash) => {
+            if (hashErr) {
+                console.error("Error hashing password:", hashErr);
+                return res.status(500).json({ error: "Error hashing password" });
+            }
+
+            // Insertion des données dans la base
+            const sql = "INSERT INTO clients (nom_Clients, prenom_Clients, email_Clients, telephone_Clients, mot_de_passe_Clients) VALUES (?, ?, ?, ?, ?)";
+            const values = [surname, name, email, phone, hash];
+
+            db.query(sql, values, (insertErr, data) => {
+                if (insertErr) {
+                    console.error("Error inserting data:", insertErr);
+                    return res.status(500).json({ error: "Error inserting data" });
+                } else {
+                    console.log("User registered with hashed password:", hash);
+                    return res.status(201).json({ message: "User registered successfully", data });
+                }
+            });
+        });
+    });
 });
 
 // Nouveau endpoint pour la connexion
 app.post("/signin", (req, res) => {
-    const { email, password } = req.body;  // Extraction des données du corps de la requête
+    const { email, password } = req.body;
+    if (!email || !password) {
+        return res.status(400).json({ error: "Email and password are required" });
+    }
+    console.log("Received signin request:", { email, password });
 
     const sql = "SELECT * FROM clients WHERE email_Clients = ?";
-    db.query(sql, [email], async (err, data) => {  // Exécution de la requête SQL pour récupérer le client par email
+    db.query(sql, [email], (err, data) => {
         if (err) {
-            return res.json(err);  // Retourne l'erreur si la requête échoue
+            console.error("Error querying database:", err);
+            return res.status(500).json({ error: "Error querying database" });
         }
         if (data.length === 0) {
-            return res.status(401).json({ message: "Invalid email or password" });  // Retourne une erreur 401 si l'email est invalide
+            console.log("No user found with email:", email);
+            return res.status(401).json({ error: "Invalid email or password" });
         }
 
-        const client = data[0];  // Récupération des données du client
-        const isPasswordValid = await bcrypt.compare(password, client.mot_de_passe_Clients);  // Comparaison du mot de passe fourni avec le mot de passe haché
+        const client = data[0];
+        console.log("User found:", client);
 
-        if (!isPasswordValid) {
-            return res.status(401).json({ message: "Invalid email or password" });  // Retourne une erreur 401 si le mot de passe est invalide
-        }
+        bcrypt.compare(password, client.mot_de_passe_Clients, (compareErr, result) => {
+            if (compareErr) {
+                console.error("Error comparing passwords:", compareErr);
+                return res.status(500).json({ error: "Error comparing passwords" });
+            }
+            if (!result) {
+                console.log("Password does not match for user:", email);
+                return res.status(401).json({ error: "Invalid email or password" });
+            }
 
-        res.status(200).json({ message: "Logged in successfully", client });  // Retourne un message de succès et les données du client si la connexion est réussie
+            console.log("Password matches for user:", email);
+            res.status(200).json({ message: "Logged in successfully", client });
+        });
     });
 });
 
+// Endpoint pour les messages de contact
+app.post("/contactus", (req, res) => {
+    const { name, email, message } = req.body;
+    if (!name || !email || !message) {
+        return res.status(400).json({ error: "All fields are required" });
+    }
+    console.log("Received contact message:", { name, email, message });
+
+    const sql = "INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)";
+    const values = [name, email, message];
+
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            console.error("Error inserting contact message:", err);
+            return res.status(500).json({ error: "Error inserting contact message" });
+        } else {
+            console.log("Contact message inserted successfully");
+            return res.status(201).json({ message: "Contact message sent successfully", data });
+        }
+    });
+});
+
+
 app.listen(8002, () => {
-    console.log("Listening...");  // Démarrage du serveur sur le port 8002 et affichage d'un message dans la console
+    console.log("Listening on port 8002...");
 });
