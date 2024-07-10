@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 const Student = () => {
-    const [student, setStudent] = useState([])
+    const [student, setStudent] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:8081/")

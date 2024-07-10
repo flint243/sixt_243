@@ -15,7 +15,6 @@ function Home()  {
         <Navbar/>
         <Templates/>
         <FeedbackComponent/>
-        <AvisComponent/>
         <FooterComponet/>
 
     </>
