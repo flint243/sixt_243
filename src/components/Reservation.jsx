@@ -58,18 +58,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const Student = () => {
-    const [student, setStudent] = useState([]);
+const Reservation = () => {
+    const [reservation, setReservation] = useState([]);
 
     useEffect(() => {
         axios.get("http://localhost:8081/")
-            .then(res => setStudent(res.data))
+            .then(res => setReservation(res.data))
             .catch(err => console.log(err));
     }, []);
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete('http://localhost:8081/student/' + id);
+            await axios.delete('http://localhost:8081/reservation/' + id);
             window.location.reload();
         } catch (err) {
             console.log(err);
@@ -91,7 +91,7 @@ const Student = () => {
                     </thead>
                     <tbody>
                         {
-                            student.map((data, i) => (
+                            reservation.map((data, i) => (
                                 <tr key={i}>
                                     <td>{data.ID}</td>
                                     <td>{data.Name}</td>
@@ -110,7 +110,7 @@ const Student = () => {
     );
 };
 
-export default Student;
+export default Reservation;
 
 
 

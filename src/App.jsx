@@ -1,9 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Student from './components/Student'
-import UpdateStudent from './components/UpdateStudent';
-import CreateStudent from './components/CreateStudent';
+import Reservation from './components/Reservation'
+import UpdateReservation from './components/UpdateReservation';
+import CreateReservation from './components/CreateReservation';
+import SignupComposant from './components/SignupComposant';
+import SigninComposant from './components/SigninComposant';
+import Blankpage from './components/Blankpage';
 function App() {
 
   return (
@@ -14,9 +17,12 @@ function App() {
        <Routes>
 
          {/* <Route path='/' element={<Home />} /> */}
-         <Route path='/' element={<Student />} />
-         <Route path='/create' element={<CreateStudent />} />
-         <Route path='/update/:id' element={<UpdateStudent />} />
+         <Route path='/' element={<Reservation />} />
+         <Route path='/create' element={<CreateReservation />} />
+         <Route path='/update/:id' element={<UpdateReservation />} />
+         {/* <Route path='/' element={<Blankpage />} />
+         <Route path='/signup' element={<SignupComposant />} />
+         <Route path='/signin' element={<SigninComposant />} /> */}
          
        </Routes>
 

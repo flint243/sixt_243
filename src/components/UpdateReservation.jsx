@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 
-const UpdateStudent = () => {
+const UpdateRservation = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const { id } = useParams();
@@ -42,7 +42,7 @@ const UpdateStudent = () => {
   )
 }
 
-export default UpdateStudent
+export default UpdateRservation
 // import axios from 'axios';
 // import React, { useState, useEffect } from 'react';
 // import { useNavigate, useParams } from 'react-router-dom';

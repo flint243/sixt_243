@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const CreateStudent = () => {
+const CreateReservation = () => {
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const navigate = useNavigate();
@@ -43,4 +43,4 @@ const CreateStudent = () => {
   )
 }
 
-export default CreateStudent
+export default CreateReservation

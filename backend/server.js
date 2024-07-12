@@ -1,68 +1,3 @@
-// const express = require("express");
-// const cors = require("cors");
-// const mysql = require("mysql");
-
-// const app = express();
-// app.use(express.json());
-// app.use(cors());
-
-// // MySQL connection
-// const db = mysql.createConnection({
-//     host: "localhost",
-//     user: "root",
-//     password: "",
-//     database: "mydatabase"
-// })
-
-// app.get("/", (req, res) => {
-//     const sql = "SELECT * FROM student"
-//     db.query(sql, (err, data) => {
-//         if(err) return res.json("Error");
-//         return res.json(data);
-//     });
-// });
-
-// app.post('/create', (req, res) => {
-//     const sql = "INSERT INTO student (`Name`, `Email`) VALUES(?)";
-//     const values = [
-//         req.body.name,
-//         req.body.email
-//     ]
-//     db.query(sql, [values], (err, data) =>{
-//         if(err) return res.json("Error");
-//         return res.json(data)
-//     })
-// })
-
-
-// app.put('/update/:id', (req, res) => {
-//     const sql = "update student set `Name` = ?, `Email` = ? where ID = ?";
-//     const values = [
-//         req.body.name,
-//         req.body.email
-//     ]
-
-//     const id = req.params.id;
-
-//     db.query(sql, [...values, id], (err, data) =>{
-//         if(err) return res.json("Error");
-//         return res.json(data)
-//     })
-// })
-
-// app.delete('/student/:id', (req, res) => {
-//     const sql = "DELETE FROM student WHERE ID = ?";
-//     const id = req.params.id;
-
-//     db.query(sql, [id], (err, data) => {
-//         if(err) return res.json("Error");
-//         return res.json(data);
-//     })
-// })
-
-// app.listen(8081, () => {
-//     console.log("listening");
-// })
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql");
@@ -72,7 +7,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MySQL connection
+// // debut MySQL CRUD
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -108,21 +43,6 @@ app.post('/create', (req, res) => {
     });
 });
 
-// app.put('/update/:id', (req, res) => {
-//     const sql = "update users set `Name` = ?, `Email` = ? where ID = ?";
-//     const values = [
-//         req.body.name,
-//         req.body.email
-//     ];
-
-//     const id = req.params.id;
-
-//     db.query(sql, [...values, id], (err, data) => {
-//         if(err) return res.json("Error");
-//         return res.json(data);
-//     });
-// });
-
 app.put('/update/:id', (req, res) => {
     const sql = "UPDATE users SET `Name` = ?, `Email` = ? WHERE ID = ?";
     const values = [
@@ -142,11 +62,7 @@ app.put('/update/:id', (req, res) => {
     });
 });
 
-
-
-
-
-app.delete('/student/:id', (req, res) => {
+app.delete('/reservation/:id', (req, res) => {
     const sql = "DELETE FROM users WHERE ID = ?";
     const id = req.params.id;
 
@@ -160,32 +76,13 @@ app.listen(8081, () => {
     console.log("listening on port 8");
 });
 
+// // fin MySQL CRUD
 
-// const express = require("express");
-// const mysql = require("mysql");
-// const cors = require("cors");
-// const bcrypt = require("bcrypt");
 
-// const app = express();
-// app.use(cors());
-// app.use(express.json());
 
-// const db = mysql.createConnection({
-//     host: process.env.DB_HOST || "localhost",
-//     user: process.env.DB_USER || "root",
-//     password: process.env.DB_PASSWORD || "",
-//     database: process.env.DB_NAME || "site_location"
-// });
 
-// db.connect((err) => {
-//     if (err) {
-//         console.error("Error connecting to the database:", err);
-//     } else {
-//         console.log("Connected to the database");
-//     }
-// });
 
-// // Endpoint pour l'inscription
+// Endpoint pour l'inscription
 // app.post("/site_location", (req, res) => {
 //     const { surname, name, email, phone, password } = req.body;
 //     if (!surname || !name || !email || !phone || !password) {
@@ -228,7 +125,82 @@ app.listen(8081, () => {
 //     });
 // });
 
-// // Nouveau endpoint pour la connexion
+// debut inscription/connexion avec base de donnes MySql
+
+
+// const express = require('express');
+// const cors = require('cors');
+// const mysql = require('mysql');
+
+// const app = express();
+// app.use(cors());
+// app.use(express.json());
+
+// const db = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'root',
+//     password: '',  
+//     database: 'test-inscription'
+// });
+
+// db.connect(err => {
+//     if (err) {
+//         console.error('Error connecting to the database:', err);
+//         return;
+//     }
+//     console.log('Connected to the database');
+// });
+
+// app.post('/signup', (req, res) => {
+//     const { name, email, phone } = req.body;
+//     const query = 'INSERT INTO users (Name, Email, Phone) VALUES (?, ?, ?)';
+//     db.query(query, [name, email, phone], (err, result) => {
+//         if (err) {
+//             console.error('Error inserting data:', err);
+//             res.status(500).send('Error inserting data');
+//             return;
+//         }
+//         res.status(200).send('Data inserted successfully');
+//     });
+// });
+
+// app.post('/signin', (req, res) => {
+//     const { email } = req.body;
+//     const query = 'SELECT * FROM users WHERE Email = ?';
+//     db.query(query, [email], (err, results) => {
+//         if (err) {
+//             console.error('Error fetching data:', err);
+//             res.status(500).send('Error fetching data');
+//             return;
+//         }
+//         if (results.length === 0) {
+//             res.status(401).send('Invalid email');
+//             return;
+//         }
+//         res.status(200).send('Login successful');
+//     });
+// });
+
+// const PORT = 8081;
+// app.listen(PORT, () => {
+//     console.log(`Server is running on port ${PORT}`);
+// });
+
+// fin code inscription/connexion avec une base de donees MySql
+
+
+        // Hachage du mot de passe
+        // bcrypt.hash(password, 10, (hashErr, hash) => {
+        //     if (hashErr) {
+        //         console.error("Error hashing password:", hashErr);
+        //         return res.status(500).json({ error: "Error hashing password" });
+        //     }
+
+            // Insertion des données dans la base
+
+
+
+// Nouveau endpoint pour la connexion
 // app.post("/signin", (req, res) => {
 //     const { email, password } = req.body;
 //     if (!email || !password) {
@@ -266,7 +238,11 @@ app.listen(8081, () => {
 //     });
 // });
 
-// // Endpoint pour les messages de contact
+
+// server.js
+
+
+// Endpoint pour les messages de contact
 // app.post("/contactus", (req, res) => {
 //     const { name, email, message } = req.body;
 //     if (!name || !email || !message) {
