@@ -40,8 +40,8 @@ const ConfirmReviews = () => {
                         <strong>Name:</strong> {review.name} <br/>
                         <strong>Email:</strong> {review.email} <br/>
                         <strong>Message:</strong> {review.message} <br/>
-                        <Button variant="success" onClick={() => confirmReview(review.id)} className="ml-2">Confirm</Button>
-                        <Button variant="danger" onClick={() => rejectReview(review.id)} className="ml-2">Reject</Button>
+                        <Button variant="success" onClick={() => confirmReview(review.id)} className="ml-2">Confirmer l'avis</Button>
+                        <Button variant="danger" onClick={() => rejectReview(review.id)} className="ml-2">Refuser l'avis</Button>
                     </ListGroup.Item>
                 ))}
             </ListGroup>
