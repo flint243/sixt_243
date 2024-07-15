@@ -18,10 +18,10 @@ export default function Navbar({ user, onSignIn, onSignOut }) {
                 <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                            <a className="nav-link btn btn-link mr-3" href="">Reservation</a>
+                            <a className="nav-link btn btn-link mr-3" href="/">Reservation</a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link btn btn-link mr-3" href="">Avis</a>
+                            <a className="nav-link btn btn-link mr-3" href="/avis">Avis</a>
                         </li>
                     </ul>
                 </div>

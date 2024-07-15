@@ -22,17 +22,20 @@ function App() {
        <Routes>
 
          {/* <Route path='/' element={<Home />} /> */}
-         
-         {/* <Route path='/' element={<Reservation />} />
-         <Route path='/create' element={<CreateReservation />} />
-         <Route path='/update/:id' element={<UpdateReservation />} /> */}
 
-         {/* <Route path='/' element={<FeedbackComponent />} /> */}
-         {/* <Route path='/' element={<ReviewForm />} /> */}
+         {/* Composant Reservation */}
+
+         {/* <Route path='/' element={<Reservation />} /> */}
+         <Route path='/create' element={<CreateReservation />} />
+         <Route path='/update/:id' element={<UpdateReservation />} />
+
+          {/* Fin Composant Reservation */}
 
          {/* Pages Admin */}
 
-         {/* <Route path='/' element={<AdminReservation />} /> */}
+         {/* <Route path='/' element={<AdminAvis/>} /> */}
+         <Route path='/' element={<AdminReservation />} />
+         <Route path='/avis' element={<AdminAvis />} />
          {/* <Route path='/' element={<AdminAvis />} /> */}
 
          {/* Fin Page Admin */}
