@@ -400,7 +400,6 @@ import { db } from '../components/auth/firebase';
 import { Modal, Button, Form } from 'react-bootstrap';
 import '../assets/css/style.css';
 import '../assets/css/FeedbackComponent.css';
-import cross from '../assets/images/cross_img.png';
 import te1 from '../assets/images/te1.png';
 import { useNavigate } from 'react-router-dom';
 
