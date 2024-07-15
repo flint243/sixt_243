@@ -539,6 +539,18 @@ button {
      background-color: #eede36cf;
 }
 
+.avis-button{
+     background-color: #181818;
+     color: white;
+}
+
+.avis-button:hover{
+     background-color: #f6d601;
+     color: white;
+}
+
+
+
 
 /** end bestCar section **/
 

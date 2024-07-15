@@ -5,21 +5,21 @@ import FooterComponet from '../components/FooterComponet'
 import AvisComponent from '../components/AvisComponent'
 import FeedbackComponent from '../components/FeedbackComponent'
 import Navbar from '../components/Navbar';
+import NavbarAdmin from '../components/NavbarAdmin';
+import ConfirmReviews from '../components/ConfirmReviews'
 
 
 
-function Home()  {
+function AdminAvis()  {
     return (
     <>
     
-        <Navbar/>
-        <Templates/>
-        <FeedbackComponent/>
-        <FooterComponet/>
-
+        <NavbarAdmin/>
+        <ConfirmReviews/>
+    
     </>
     )
 }
 
-export default Home;
+export default AdminAvis;
 

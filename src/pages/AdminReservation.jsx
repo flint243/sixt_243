@@ -5,21 +5,21 @@ import FooterComponet from '../components/FooterComponet'
 import AvisComponent from '../components/AvisComponent'
 import FeedbackComponent from '../components/FeedbackComponent'
 import Navbar from '../components/Navbar';
+import NavbarAdmin from '../components/NavbarAdmin';
+import ConfirmReviews from '../components/ConfirmReviews'
+import Reservation from '../components/Reservation'
 
 
 
-function Home()  {
+function AdminReservation()  {
     return (
     <>
     
-        <Navbar/>
-        <Templates/>
-        <FeedbackComponent/>
-        <FooterComponet/>
-
+        <NavbarAdmin/>
+        <Reservation/>
+    
     </>
     )
 }
 
-export default Home;
-
+export default AdminReservation;

@@ -156,8 +156,10 @@ export default function Templates() {
             </div>
          </div>
       </div>
-      
-      <div className="choose" id='target1'>
+
+
+      <div className="choose" >
+      <div id='target1'></div>
          <div className="container">
             <div className="row">
                <div className="col-md-12">
