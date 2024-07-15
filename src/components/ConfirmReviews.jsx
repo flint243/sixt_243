@@ -86,11 +86,11 @@ const ConfirmReviews = () => {
     };
 
     return (
-        <Container className="mt-5 bg-dark text-light p-4 rounded">
-            <h2>Confirm Reviews</h2>
+        <Container className="mt-5 text-light p-4 rounded">
+            <h2 className=' text-dark'>Confirm Reviews</h2>
             <ListGroup>
                 {reviews.map((review) => (
-                    <ListGroup.Item key={review.id} className="bg-secondary text-light mb-2">
+                    <ListGroup.Item key={review.id} className=" text-secondary mb-5">
                         <strong>Name:</strong> {review.name} <br/>
                         <strong>Email:</strong> {review.email} <br/>
                         <strong>Message:</strong> {review.message} <br/>

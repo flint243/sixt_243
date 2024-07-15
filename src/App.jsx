@@ -26,21 +26,22 @@ function App() {
          {/* Composant Reservation */}
 
          {/* <Route path='/' element={<Reservation />} /> */}
-         <Route path='/create' element={<CreateReservation />} />
-         <Route path='/update/:id' element={<UpdateReservation />} />
+         {/* <Route path='/create' element={<CreateReservation />} />
+         <Route path='/update/:id' element={<UpdateReservation />} /> */}
 
           {/* Fin Composant Reservation */}
 
          {/* Pages Admin */}
 
          {/* <Route path='/' element={<AdminAvis/>} /> */}
-         <Route path='/' element={<AdminReservation />} />
-         <Route path='/avis' element={<AdminAvis />} />
+         {/* <Route path='/' element={<AdminReservation />} />
+         <Route path='/avis' element={<AdminAvis />} /> */}
+         <Route path='/' element={<FeedbackComponent />} />
          {/* <Route path='/' element={<AdminAvis />} /> */}
 
          {/* Fin Page Admin */}
 
-         {/* <Route path='/confirm' element={<ConfirmReviews />} /> */}
+         <Route path='/confirm' element={<ConfirmReviews />} />
          {/* <Route path='/' element={<Blankpage />} />
          <Route path='/signup' element={<SignupComposant />} />
          <Route path='/signin' element={<SigninComposant />} /> */}
