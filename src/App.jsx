@@ -12,6 +12,9 @@ import ReviewForm from './components/ReviewsForm';
 import FeedbackComponent from './components/FeedbackComponent';
 import AdminReservation from './pages/AdminReservation';
 import AdminAvis from './pages/AdminAvis';
+import AvisComponent from './components/AvisComponent';
+import AvisPage from './components/AvisPage';
+import Templates from './components/Templates';
 function App() {
 
   return (
@@ -36,12 +39,13 @@ function App() {
          {/* <Route path='/' element={<AdminAvis/>} /> */}
          {/* <Route path='/' element={<AdminReservation />} />
          <Route path='/avis' element={<AdminAvis />} /> */}
-         <Route path='/' element={<FeedbackComponent />} />
+         {/* <Route path='/' element={<FeedbackComponent />} /> */}
          {/* <Route path='/' element={<AdminAvis />} /> */}
 
          {/* Fin Page Admin */}
 
-         <Route path='/confirm' element={<ConfirmReviews />} />
+         {/* <Route path='/confirm' element={<ConfirmReviews />} /> */}
+         <Route path='/' element={<FeedbackComponent />} />
          {/* <Route path='/' element={<Blankpage />} />
          <Route path='/signup' element={<SignupComposant />} />
          <Route path='/signin' element={<SigninComposant />} /> */}
