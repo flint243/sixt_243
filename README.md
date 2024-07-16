@@ -32,7 +32,7 @@ Ce projet est un site Web complet de location de voitures construit à l'aide de
 ### Back-end
 <<<<<<< HEAD
 
-    Noeud.js
+    Node.js
     Express.js
     
 ### Bases de données
@@ -93,25 +93,29 @@ Ce projet est un site Web complet de location de voitures construit à l'aide de
 site-de-location-de-voiture-cd
 
 2. Installer les dépendances
-- npm je viens @latest
-- installation npm
-- npm je réagis routeur-dom
-- npm j'exprime les cors
+- npm create vite@latest
+- npm i (install)
+- npm i react-routeur-dom
+- npm i express
+- npm cors
 
 
 # DÉFINITION DES TERMES BASE DE DONNÉES RELATIONNELLES
 
 ### 1. Introduction
+
 ○ Présentation générale des modèles de données et des bases de données
 relationnelles.
 
 ### 2. Modèle Conceptuel de Données (MCD)
+
 ○ 2.1 Entité
 ○ 2.2 Attribut
 ○ 2.3 Relation
 ○ 2.4 Cardinalité
 
 ### 3. Modèle Physique de Données (MPD)
+
 ○ 3.1 Table
 ○ 3.2 Colonne
 ○ 3.3 Index
@@ -119,10 +123,12 @@ relationnelles.
 ○ 3.5 Clé Étrangère
 
 ### 4. Modèle Logique de Données (MLD)
+
 ○ 4.1 Table Logique
 ○ 4.2 Schéma Logique
 
 ### 5. SQL (Structured Query Language)
+
 ○ 5.1 SELECT
 ○ 5.2 INSERT
 ○ 5.3 UPDATE
@@ -132,19 +138,23 @@ relationnelles.
 ○ 5.7 DROP
 
 ### 6. Base de Données Relationnelle
+
 ○ 6.1 Relation
 ○ 6.2 Tuple
 ○ 6.3 Schéma
 
 ### 7. Dictionnaire de Données
+
 ○ 7.1 Description d'Entité
 ○ 7.2 Description d'Attribut
 ○ 7.3 Description de Relation
 
 ### 8. Exemples Pratiques
+
 ○ 8.1 Exemples d'Entités
 ○ 8.2 Exemples d'Attributs
 ○ 8.3 Exemples de Relations et de Cardinalités
+
 ### 9. Conclusion
 
 ○ Synthèse des concepts et importance des modèles de données pour la
@@ -154,6 +164,7 @@ Ce sommaire peut servir de guide pour une présentation ou un document détaill�
 concepts liés aux bases de données relationnelles et aux modèles de données.
 
 ## BASE DE DONNÉES RELATIONNELLES
+
 Une base de données relationnelle est un système de gestion de données
 organisé en tables, où les données sont stockées sous forme de lignes et de
 colonnes. Les tables sont interconnectées par des relations définies par des
@@ -163,24 +174,28 @@ la gestion et la manipulation des données.
 MCD
 
 ### Un MCD (Modèle Conceptuel de Données) est une représentation graphique des
+
 données et de leurs relations dans une base de données. Il décrit les entités, leurs
 attributs, et les relations entre elles, permettant de structurer et d'organiser les
 informations de manière logique avant la création physique de la base de données.
 MPD
 
 ### Un MPD (Modèle Physique de Données) : C'est la traduction du MCD en un
+
 schéma physique pour une base de données spécifique. Il décrit comment les
 données seront réellement stockées dans le système de gestion de bases de
 données (SGBD) en termes de tables, colonnes, types de données, index, etc.
 MLD
 
 ### Un MLD (Modèle Logique de Données) : C'est une étape intermédiaire entre le
+
 MCD et le MPD. Il convertit le MCD en un modèle plus détaillé sans se préoccuper
 des spécificités techniques du SGBD. Le MLD spécifie les tables, les colonnes et les
 clés primaires/étrangères tout en restant indépendant du SGBD.
 UNE ENTITÉ
 
 ### Une entité dans un MCD (Modèle Conceptuel de Données) est un objet ou concept
+
 distinct et identifiable, pertinent pour le domaine étudié, qui possède des attributs décrivant
 ses propriétés. Par exemple, "Client", "Produit" ou "Commande" sont des entités.
 UNE ASSOCIATION
@@ -190,6 +205,7 @@ Par exemple, une association entre "Client" et "Commande" indique qu'un client p
 commandes.
 
 ### LA CARDINALITÉ
+
 La cardinalité dans le MCD (Modèle Conceptuel de Données) représente le nombre
 d'occurrences d'une entité qui peuvent être associées à une occurrence d'une autre entité
 dans une relation. En d'autres termes, elle définit les contraintes quantitatives des relations
@@ -197,8 +213,10 @@ entre les entités.
 Il existe principalement trois types de cardinalité :
 
 #### 1. Un-à-Un (1:1) : Une occurrence d'une entité A est associée à une et une seule
+
 occurrence d'une entité B, et vice versa. Par exemple, chaque personne a un
 numéro de sécurité sociale unique.
+
 #### 2. Un-à-Plusieurs (1
 
 ) : Une occurrence d'une entité A peut être associée à plusieurs occurrences d'une
@@ -240,26 +258,29 @@ Un dictionnaire de données obtenu à partir d'un MCD (Modèle Conceptuel de Don
 un document qui détaille et décrit les éléments de données représentés dans le MCD. Il sert
 de référence pour comprendre les données et leur structure dans la base de données. Voici
 comment il peut être expliqué :
-#### 1. Entités : Chaque entité du MCD est listée avec son nom et sa description. Une entité
+
+1. Entités : Chaque entité du MCD est listée avec son nom et sa description. Une entité
 représente un objet ou un concept important pour le système (par exemple, Client ou
 Produit).
 
-#### 2. Attributs : Pour chaque entité, tous les attributs (ou champs) sont détaillés. Chaque
-attribut a un nom, une description, un type de données (par exemple, entier, texte,
+2. Attributs : Pour chaque entité, tous les attributs (ou champs) sont détaillés. 
+Chaque attribut a un nom, une description, un type de données (par exemple, entier, texte,
 date), et des contraintes éventuelles (comme la taille maximale, si c'est une clé
 primaire, etc.).
 
-#### 3. Relations : Les relations entre les entités sont décrites. Chaque relation indique les
+3. Relations : Les relations entre les entités sont décrites. Chaque relation indique les
+
 entités concernées, le type de relation (un-à-un, un-à-plusieurs, plusieurs
 à-plusieurs), et les contraintes de la relation (comme les clés étrangères).
 
-#### 4. Contraintes et règles de gestion : Toute règle ou contrainte d'intégrité spécifique
+4. Contraintes et règles de gestion : Toute règle ou contrainte d'intégrité spécifique
+
 est mentionnée. Cela inclut les règles de validation des données, les contraintes
 d'unicité, les dépendances entre les données, etc.
 
-#### 5. Autres Détails : Des informations supplémentaires peuvent être incluses, telles que
-les valeurs par défaut pour certains attributs, les index, les vues, les déclencheurs, et
-d'autres objets de la base de données.
+ 5. Autres Détails : Des informations supplémentaires peuvent être incluses, telles que
+ les valeurs par défaut pour certains attributs, les index, les vues, les déclencheurs, et d'autres objets de la base de données.
+
 Exemple : Pour une entité "Client", le dictionnaire de données pourrait inclure :
 ● Entité : Client
 ○ Description : Représente les clients de l'entreprise.
@@ -278,12 +299,14 @@ leurs interrelations dans le système.
 # Glossaire des termes techniques
 
 #### 1. MCD (Modèle Conceptuel de Données)
+
 ● Entité : Objet ou concept distinct identifiable, ayant des propriétés pertinentes pour
 le domaine étudié.
 ● Attribut : Propriété ou caractéristique d'une entité.
 ● Relation : Lien entre deux ou plusieurs entités, définissant leurs interactions.
 ● Cardinalité : Nombre d'occurrences d'une entité pouvant être associées à une
 occurrence d'une autre entité dans une relation.
+
 #### 2. MPD (Modèle Physique de Données)
 
 ● Table : Structure de stockage de données organisée en lignes et colonnes.
@@ -294,12 +317,14 @@ dans une table.
 occurrence d'une entité.
 ● Clé Étrangère : Attribut d'une table qui est une clé primaire dans une autre table,
 établissant une relation entre les tables.
+
 #### 3. MLD (Modèle Logique de Données)
 
 ● Table Logique : Structure théorique représentant comment les données seront
 organisées, indépendamment du SGBD spécifique.
 ● Schéma Logique : Représentation détaillée des tables, colonnes, clés primaires et
 étrangères sans spécificités techniques du SGBD.
+
 #### 4. SQL (Structured Query Language)
 
 ● SELECT : Instruction SQL utilisée pour récupérer des données de la base de
@@ -314,12 +339,14 @@ dans la base de données.
 base de données.
 
 #### 5. Base de Données Relationnelle
+
 ● Relation : Table dans une base de données relationnelle.
 ● Tuple : Ligne dans une table, représentant un enregistrement unique.
 ● Schéma : Définition de la structure de la base de données, incluant les tables et
 leurs relations.
 
 #### 6. Dictionnaire de Données
+
 ● Description d'Entité : Détail des entités, incluant leur nom et description.
 ● Description d'Attribut : Détail des attributs d'une entité, incluant nom, type de
 données et contraintes.
@@ -334,8 +361,6 @@ Exemples
 Ce glossaire couvre les termes essentiels pour comprendre et travailler avec des modèles
 conceptuels, logiques et physiques de données, ainsi que les bases de données
 relationnelles et SQL.
-
-
 
 # React + Vite
 
