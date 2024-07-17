@@ -39,13 +39,13 @@ function App() {
          {/* <Route path='/' element={<AdminAvis/>} /> */}
          {/* <Route path='/' element={<AdminReservation />} />
          <Route path='/avis' element={<AdminAvis />} /> */}
-         {/* <Route path='/' element={<FeedbackComponent />} /> */}
+         <Route path='/' element={<FeedbackComponent />} />
          {/* <Route path='/' element={<AdminAvis />} /> */}
 
          {/* Fin Page Admin */}
 
          {/* <Route path='/confirm' element={<ConfirmReviews />} /> */}
-         <Route path='/' element={<FeedbackComponent />} />
+         <Route path='/confirm' element={<AdminAvis />} />
          {/* <Route path='/' element={<Blankpage />} />
          <Route path='/signup' element={<SignupComposant />} />
          <Route path='/signin' element={<SigninComposant />} /> */}
